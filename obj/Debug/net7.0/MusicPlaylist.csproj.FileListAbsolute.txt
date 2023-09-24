@@ -1,0 +1,14 @@
+C:\Users\Jordan\source\repos\MusicPlaylist\bin\Debug\net7.0\MusicPlaylist.exe
+C:\Users\Jordan\source\repos\MusicPlaylist\bin\Debug\net7.0\MusicPlaylist.deps.json
+C:\Users\Jordan\source\repos\MusicPlaylist\bin\Debug\net7.0\MusicPlaylist.runtimeconfig.json
+C:\Users\Jordan\source\repos\MusicPlaylist\bin\Debug\net7.0\MusicPlaylist.dll
+C:\Users\Jordan\source\repos\MusicPlaylist\bin\Debug\net7.0\MusicPlaylist.pdb
+C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\MusicPlaylist.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\MusicPlaylist.AssemblyInfoInputs.cache
+C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\MusicPlaylist.AssemblyInfo.cs
+C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\MusicPlaylist.csproj.CoreCompileInputs.cache
+C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\MusicPlaylist.dll
+C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\refint\MusicPlaylist.dll
+C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\MusicPlaylist.pdb
+C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\MusicPlaylist.genruntimeconfig.cache
+C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\ref\MusicPlaylist.dll
