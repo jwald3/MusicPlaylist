@@ -77,6 +77,15 @@ namespace MusicPlaylist
             playlist.StartPlaylist();
             var nowPlaying = playlist.GetNowPlaying();
             System.Console.WriteLine($"Now playing: {nowPlaying}");
+
+            playlist.SkipSong();
+
+            playlist.GoBackSong();
+
+            var nextNowPlaying = playlist.GetNowPlaying();
+            Console.WriteLine($"Now playing: {nextNowPlaying}");
+
+            playlist.SkipSong();
         }
     }
 }

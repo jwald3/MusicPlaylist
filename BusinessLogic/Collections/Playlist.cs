@@ -7,11 +7,13 @@ namespace MusicPlaylist.BusinessLogic.Collections
     {
         public Song? Data { get; set; }
         public Node<Song>? Next { get; set; } = null;
+        public Node<Song>? Previous { get; set; } = null;
 
         public Node(Song song)
         {
             Data = song;
             Next = null;
+            Previous = null;
         }
     }
 
@@ -29,7 +31,8 @@ namespace MusicPlaylist.BusinessLogic.Collections
         public void AddToStart(Song song)
         {
             Node<Song> newSong = new Node<Song>(song) {
-                Next = Head
+                Next = Head,
+                Previous = null
             };
 
             Head = newSong;
@@ -51,6 +54,7 @@ namespace MusicPlaylist.BusinessLogic.Collections
                 current = current.Next;
             }
 
+            newSong.Previous = current;
             current.Next = newSong;
         }
 
@@ -61,23 +65,36 @@ namespace MusicPlaylist.BusinessLogic.Collections
             if (Head.Data?.Equals(song) == true)
             {
                 Head = Head.Next;
+                if (Head is not null)
+                {
+                    Head.Previous = null;
+                }
+                
                 return;
             }
 
-            var current = Head;
+            var trailingNode = Head;
+            var leadNode = Head.Next;
 
-            while (current?.Next is not null)
+            while (leadNode is not null)
             {
-                if (current.Next.Data?.Equals(song) == true)
+                if (leadNode.Data?.Equals(song) == true)
                 {
-                    current.Next = current.Next.Next;
+                    trailingNode.Next = leadNode.Next;
+                 
+                    if (leadNode.Next is not null)
+                    {
+                        leadNode.Next.Previous = trailingNode;
+                    }
+                    
                     break;
-                }   
+                }
                 else 
                 {
-                    current = current.Next;
+                    trailingNode = leadNode;
+                    leadNode = leadNode.Next;
                 }
-            } 
+            }
         }
     
         public void RemoveSongByName(string songName)
@@ -87,20 +104,34 @@ namespace MusicPlaylist.BusinessLogic.Collections
             if (Head.Data?.SongName == songName) 
             {
                 Head = Head.Next;
+                if (Head is not null)
+                {
+                    Head.Previous = null;
+                }
+
                 return;
             }
 
-            var current = Head;
-            while (current?.Next is not null)
+            var trailingNode = Head;
+            var leadNode = Head.Next;
+
+            while (leadNode is not null)
             {
-                if (current.Next.Data?.SongName == songName) 
+                if (leadNode.Data?.SongName?.Equals(songName) == true)
                 {
-                    current.Next = current.Next.Next;
+                    trailingNode.Next = leadNode.Next;
+                 
+                    if (leadNode.Next is not null)
+                    {
+                        leadNode.Next.Previous = trailingNode;
+                    }
+                    
                     break;
                 }
                 else 
                 {
-                    current = current.Next;
+                    trailingNode = leadNode;
+                    leadNode = leadNode.Next;
                 }
             }
         }
@@ -176,6 +207,44 @@ namespace MusicPlaylist.BusinessLogic.Collections
             }
 
             return NowPlaying.Data;
+        }
+
+        public void SkipSong()
+        {
+            if (NowPlaying is null)
+            {
+                throw new Exception("Playlist hasn't started yet.");
+            }
+            else
+            {
+                if (NowPlaying.Next is not null)
+                {
+                    NowPlaying = NowPlaying.Next;
+                }
+                else 
+                {
+                    Console.WriteLine("Playlist is over.");
+                }
+            }
+        }
+
+        public void GoBackSong()
+        {
+            if (NowPlaying is null)
+            {
+                throw new Exception("Playlist hasn't started yet.");
+            }
+            else
+            {
+                if (NowPlaying.Previous is not null)
+                {
+                    NowPlaying = NowPlaying.Previous;
+                }
+                else 
+                {
+                    System.Console.WriteLine("No songs before this one.");
+                }
+            }
         }
 
         public void PrintSongs()
