@@ -223,6 +223,7 @@ namespace MusicPlaylist.BusinessLogic.Collections
                 }
                 else 
                 {
+                    NowPlaying = null;
                     Console.WriteLine("Playlist is over.");
                 }
             }
@@ -244,6 +245,14 @@ namespace MusicPlaylist.BusinessLogic.Collections
                 {
                     System.Console.WriteLine("No songs before this one.");
                 }
+            }
+        }
+
+        public void AddRange(List<Song> songs)
+        {
+            foreach (var song in songs)
+            {
+                AddToEnd(song);
             }
         }
 

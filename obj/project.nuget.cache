@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "oIlCNldkiUgB3DnA4KQd05zxv/BlCAGEBUTCCGByXwP6wrvz2mZXiBgZoleW4l7yDy8Pf709h0NA84Amq35RxQ==",
+  "dgSpecHash": "HlAzu8aRD/+Q/aXPB/rdA+tJjbqT3tOkWXW9s5Wcbf2AOLhn6emI+RvQdmJqtWh1WUhC8zSiLCMQEezk9LPiiw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jordan\\source\\repos\\MusicPlaylist\\MusicPlaylist.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Jordan\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

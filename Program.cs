@@ -1,6 +1,8 @@
 ﻿using System;
+using MusicPlaylist.BusinessLogic;
 using MusicPlaylist.BusinessLogic.Collections;
 using MusicPlaylist.BusinessLogic.Models;
+using Newtonsoft.Json;
 
 namespace MusicPlaylist
 {
@@ -8,84 +10,67 @@ namespace MusicPlaylist
     {
         static void Main(string[] args)
         {
-            Song song1 = new Song {
-                SongName = "FE!N",
-                ArtistName = "Travis Scott",
-                AlbumName = "UTOPIA",
-                Length = 192
-            };
-
-            Song song2 = new Song 
-            {
-                SongName = "Stick Talk",
-                ArtistName = "Future",
-                AlbumName = "DS2",
-                Length = 173
-            };
-
-            Song song3 = new Song 
-            {
-                SongName = "MIA (feat. Drake)",
-                ArtistName = "Bad Bunny",
-                AlbumName = "X 100pre",
-                Length = 212
-            };
+            SongDataLoader songDataLoader = new SongDataLoader();
+            List<Song>? songs = songDataLoader.LoadSongs("./Data/Songs.json");
             
             Playlist playlist = new Playlist();
-            playlist.AddToEnd(song1);
-            playlist.AddToEnd(song2);
-            playlist.AddToStart(song3);
 
-            Console.WriteLine("Before removal:");
-
-            playlist.PrintSongs();
-
-            playlist.RemoveSongByName("MIA (feat. Drake)");
-
-            Console.WriteLine("After removal:");
-
-            playlist.PrintSongs();
-
-            Song song4 = new Song
+            if (songs?.Count > 0)
             {
-                SongName = "Half on a Sack",
-                ArtistName = "Three 6 Mafia",
-                AlbumName = "Most Known Unknown",
-                Length = 207
-            };
+                playlist.AddRange(songs);
+            }
 
-            playlist.AddToEnd(song4);
 
-            Console.WriteLine("After adding song4:");
-            playlist.PrintSongs();
+            char response = new char();
+            System.Console.WriteLine("");
 
-            Console.WriteLine("Searching...");
-            var searchedSong = playlist.SearchSongByName("Stick Talk");
-            Console.WriteLine(searchedSong);
-            Console.WriteLine("Searching again...");
-            var secondSearchedSong = playlist.SearchSongByName("I KNOW ?");
-            Console.WriteLine(secondSearchedSong);
-            System.Console.WriteLine("Searching by node:");
-            var searchedByObject = playlist.SearchSongByObject(searchedSong);
-            System.Console.WriteLine(searchedByObject);
-            System.Console.WriteLine("Deleting searchedSong");
-            playlist.RemoveSongByName(searchedSong?.SongName ?? "");
-            playlist.PrintSongs();
-            System.Console.WriteLine("Print results:");
-            var searchedByObjectAfterDelete = playlist.SearchSongByObject(searchedSong);
-            System.Console.WriteLine(searchedByObjectAfterDelete);
-            playlist.StartPlaylist();
-            var nowPlaying = playlist.GetNowPlaying();
-            System.Console.WriteLine($"Now playing: {nowPlaying}");
+            while (response != 'q')
+            {
+                Console.WriteLine("Welcome to your MP3 player!");
+                Console.WriteLine("Here are your actions:");
+                Console.WriteLine("a - See all songs");
+                Console.WriteLine("s - Start playlist");
+                Console.WriteLine("p - Get song playing");
+                Console.WriteLine("n - Go forward one song");
+                Console.WriteLine("b - Go back one song");
+                Console.WriteLine("q - Quit the program");
 
-            playlist.SkipSong();
+                response = Console.ReadKey().KeyChar;
 
-            playlist.GoBackSong();
+                System.Console.WriteLine("");
 
-            var nextNowPlaying = playlist.GetNowPlaying();
-            Console.WriteLine($"Now playing: {nextNowPlaying}");
+                switch(response)
+                {
+                    case 'a':
+                    case 'A':
+                        playlist.PrintSongs();
+                        break;
+                    case 's':
+                    case 'S':
+                        playlist.StartPlaylist();
+                        break;
+                    case 'p':
+                    case 'P':
+                        Song? nowPlaying = playlist.GetNowPlaying();
+                        System.Console.WriteLine(nowPlaying);
+                        break;
+                    case 'n':
+                    case 'N':
+                        playlist.SkipSong();
+                        break;
+                    case 'b':
+                    case 'B':
+                        playlist.GoBackSong();
+                        break;
+                    case 'q':
+                    case 'Q':
+                        break;
+                    default:
+                        continue;
 
-            playlist.SkipSong();
+                }
+            }
+
         }
     }
 }

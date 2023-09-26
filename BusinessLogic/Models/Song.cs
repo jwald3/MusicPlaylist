@@ -5,11 +5,11 @@ namespace MusicPlaylist.BusinessLogic.Models
         public string? SongName { get; set; }
         public string? ArtistName { get; set; }
         public string? AlbumName { get; set; }
-        public int Length { get; set; }
+        public TimeSpan Length { get; set; }
 
         public Song() {}
 
-        public Song(string songName, string artistName, string albumName, int length)
+        public Song(string songName, string artistName, string albumName, TimeSpan length)
         {
             SongName = songName;
             ArtistName = artistName;
@@ -17,12 +17,9 @@ namespace MusicPlaylist.BusinessLogic.Models
             Length = length;
         }
 
-        private string SongLengthToStringFormat(int length)
+        private string SongLengthToStringFormat(TimeSpan length)
         {
-            int minutes = length / 60;
-            int seconds = length % 60;
-
-            return $"{minutes}:{seconds}";
+            return $"{length.Minutes}:{length.Seconds:D2}";
         }
 
         public override string ToString()

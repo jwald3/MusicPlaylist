@@ -12,3 +12,6 @@ C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\refint\MusicPlaylist
 C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\MusicPlaylist.pdb
 C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\MusicPlaylist.genruntimeconfig.cache
 C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\ref\MusicPlaylist.dll
+C:\Users\Jordan\source\repos\MusicPlaylist\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\MusicPlaylist.csproj.AssemblyReference.cache
+C:\Users\Jordan\source\repos\MusicPlaylist\obj\Debug\net7.0\MusicPlaylist.csproj.CopyComplete
