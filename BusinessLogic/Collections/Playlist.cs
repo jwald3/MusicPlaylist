@@ -3,13 +3,13 @@ using MusicPlaylist.BusinessLogic.Models;
 
 namespace MusicPlaylist.BusinessLogic.Collections
 {
-    public class Node<Song> 
+    public class Node 
     {
         public Song? Data { get; set; }
-        public Node<Song>? Next { get; set; } = null;
-        public Node<Song>? Previous { get; set; } = null;
+        public Node? Next { get; set; } = null;
+        public Node? Previous { get; set; } = null;
 
-        public Node(Song song)
+        public Node(Song? song)
         {
             Data = song;
             Next = null;
@@ -19,8 +19,8 @@ namespace MusicPlaylist.BusinessLogic.Collections
 
     public class Playlist 
     {
-        public Node<Song>? Head { get; set; }
-        public Node<Song>? NowPlaying { get; set; }
+        public Node? Head { get; set; }
+        public Node? NowPlaying { get; set; }
 
         public Playlist()
         {
@@ -30,7 +30,7 @@ namespace MusicPlaylist.BusinessLogic.Collections
 
         public void AddToStart(Song song)
         {
-            Node<Song> newSong = new Node<Song>(song) {
+            Node newSong = new Node(song) {
                 Next = Head,
                 Previous = null
             };
@@ -40,7 +40,7 @@ namespace MusicPlaylist.BusinessLogic.Collections
 
         public void AddToEnd(Song song)
         {
-            Node<Song> newSong = new Node<Song>(song);
+            Node newSong = new Node(song);
 
             if (Head is null)
             {
@@ -193,7 +193,8 @@ namespace MusicPlaylist.BusinessLogic.Collections
         {
             if (Head is null) 
             {
-                throw new Exception("Playlist is empty");
+                Console.WriteLine("Cannot start: Playlist is empty");
+                return;
             }
 
             NowPlaying = Head;
@@ -203,7 +204,8 @@ namespace MusicPlaylist.BusinessLogic.Collections
         {
             if (NowPlaying is null) 
             {
-                throw new Exception("Playlist hasn't started yet.");
+                Console.WriteLine("Cannot get current song: Playlist hasn't started yet.");
+                return null;
             }
 
             return NowPlaying.Data;
@@ -213,7 +215,8 @@ namespace MusicPlaylist.BusinessLogic.Collections
         {
             if (NowPlaying is null)
             {
-                throw new Exception("Playlist hasn't started yet.");
+                Console.WriteLine("Cannot skip: Playlist hasn't started yet.");
+                return;
             }
             else
             {
@@ -233,7 +236,8 @@ namespace MusicPlaylist.BusinessLogic.Collections
         {
             if (NowPlaying is null)
             {
-                throw new Exception("Playlist hasn't started yet.");
+                Console.WriteLine("Cannot go back: Playlist hasn't started yet.");
+                return;
             }
             else
             {
@@ -256,13 +260,13 @@ namespace MusicPlaylist.BusinessLogic.Collections
             }
         }
 
-        public void PrintSongs()
+        public void PrintSongs(TextWriter? writer = null)
         {
+            writer ??= Console.Out;
             var current = Head;
-
             while (current is not null)
             {
-                Console.WriteLine(current.Data);
+                writer.WriteLine(current.Data);
                 current = current.Next;
             }
         }
