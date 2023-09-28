@@ -62,12 +62,12 @@ The application loads song data from a JSON file structured as follows:
 ]
 ```
 
-### Error Handling
+## Error Handling
 The application provides clear error messages and handles exceptions gracefully, ensuring a smooth user experience even in the case of unexpected errors.
 
-### Contributions
+## Contributions
 Feel free to contribute to this project by creating a Pull Request.
 
-### License
+## License
 MIT
 
