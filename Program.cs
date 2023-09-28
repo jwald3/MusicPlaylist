@@ -44,10 +44,10 @@ namespace MusicPlaylist
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.UpArrow:
-                        currentMenuIndex = (currentMenuIndex + menuItems.Count + 1) % menuItems.Count;
+                        currentMenuIndex = (currentMenuIndex + menuItems.Count - 1) % menuItems.Count;
                         break;
                     case ConsoleKey.DownArrow:
-                        currentMenuIndex = (currentMenuIndex + menuItems.Count - 1) % menuItems.Count;
+                        currentMenuIndex = (currentMenuIndex + menuItems.Count + 1) % menuItems.Count;
                         break;
                     case ConsoleKey.Enter:
                         menuHandler.HandleSelection(menuItems[currentMenuIndex], playlist);

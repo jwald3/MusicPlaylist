@@ -2,10 +2,10 @@ namespace MusicPlaylist.BusinessLogic.Models
 {
     public class Song
     {
-        public string SongName { get; }
-        public string ArtistName { get; }
-        public string AlbumName { get; }
-        public TimeSpan Length { get; }
+        public string SongName { get; set; }
+        public string ArtistName { get; set; }
+        public string AlbumName { get; set; }
+        public TimeSpan Length { get; set; }
 
         public Song() : this("Unknown", "Unknown", "Unknown", TimeSpan.Zero) { } 
 

@@ -1,5 +1,7 @@
+using System.Reflection;
 using MusicPlaylist.BusinessLogic.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace MusicPlaylist.BusinessLogic
 {
@@ -7,8 +9,25 @@ namespace MusicPlaylist.BusinessLogic
     {
         public List<Song>? LoadSongs(string path)
         {
-            string songsJson = File.ReadAllText(path);
-            return !string.IsNullOrEmpty(songsJson) ? JsonConvert.DeserializeObject<List<Song>>(songsJson) : null;
+            try
+            {
+                string songsJson = File.ReadAllText(path);
+
+                var settings = new JsonSerializerSettings
+                {
+                    ContractResolver = new DefaultContractResolver
+                    {
+                        NamingStrategy = new CamelCaseNamingStrategy()
+                    }
+                };
+
+                return JsonConvert.DeserializeObject<List<Song>>(songsJson, settings);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error {ex.Message}");
+                return null;
+            }
         }
     }
 }
