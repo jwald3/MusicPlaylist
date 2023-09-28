@@ -22,5 +22,29 @@
         "ArtistName": "Three 6 Mafia",
         "AlbumName": "Most Known Unknown",
         "Length": "00:03:27"
+    },
+    {
+        "SongName": "SICKO MODE",
+        "ArtistName": "Travis Scott",
+        "AlbumName": "ASTROWORLD",
+        "Length": "00:05:12"
+    },
+    {
+        "SongName": "Bands a Make Her Dance",
+        "ArtistName": "Juicy J",
+        "AlbumName": "Stay Trippy",
+        "Length": "00:04:41"
+    },
+    {
+        "SongName": "Rich Flex",
+        "ArtistName": "21 Savage",
+        "AlbumName": "Her Loss",
+        "Length": "00:03:59"
+    },
+    {
+        "SongName": "Sanguine Paradise",
+        "ArtistName": "Lil Uzi Vert",
+        "AlbumName": "Sanguine Paradise",
+        "Length": "00:04:03"
     }
 ]

@@ -18,7 +18,7 @@ namespace MusicPlaylist.BusinessLogic.Handlers
             {
                 if (i == selectedItemIndex)
                 {
-                    Console.BackgroundColor = ConsoleColor.Gray;
+                    Console.BackgroundColor = ConsoleColor.Green;
                 }
 
                 Console.WriteLine(items[i]);
